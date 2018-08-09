@@ -1,0 +1,21 @@
+{
+    "name": "zhaokongdong/redis-queue",
+    "description": "A simple php queue based on redis",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tim Zhao",
+            "email": "zhaokongdong@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "RedisQueue\\": "src/"
+        }
+    }
+}
