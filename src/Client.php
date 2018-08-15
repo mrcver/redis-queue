@@ -14,9 +14,15 @@ class Client implements ClientInterface
 {
     use RedisTrait;
 
-    public function __construct(\Redis $redis)
+    /**
+     * Client constructor.
+     * @param \Redis $redis
+     * @param string $queueName
+     */
+    public function __construct(\Redis $redis, $queueName = 'default')
     {
-        $this->redis = $redis;
+        // 初始化配置
+        $this->init($redis, $queueName);
     }
 
     /**
@@ -28,7 +34,7 @@ class Client implements ClientInterface
     public function dispatch(Job $job, int $maxTries = 0)
     {
         $data = [
-            'jobName' => get_class($job),
+            'name' => get_class($job),
             'job' => serialize($job),
             'maxTries' => $maxTries,
             'runTimes' => 0,
@@ -45,5 +51,10 @@ class Client implements ClientInterface
     {
         $data = json_encode($data);
         $this->redis->lPush($this->list, $data);
+    }
+
+    public function test()
+    {
+        echo 'this is a test function' . PHP_EOL;
     }
 }

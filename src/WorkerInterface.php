@@ -3,11 +3,12 @@
 namespace RedisQueue;
 
 /**
- * Interface ServerInterface
+ * Interface WorkerInterface
  * 消息队列任务执行接口
  * @package RedisQueue
  */
-interface ServerInterface {
+interface WorkerInterface
+{
     const VERSION = '1.0';
 
     /**
